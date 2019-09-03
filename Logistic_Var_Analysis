@@ -1,0 +1,183 @@
+libname log 'C:/Users/patri/OneDrive/Documents/MSA-LAPTOP-2G31T0D4/SAS/Logistic';
+
+		/* SAV Binary */
+proc univariate data=log.insurance_t;
+	var SAV;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=SAV / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=SAV';
+run;
+/* Testing Assumptions */
+/* Mantel-Haenszel Chi-Sq */
+/* Ordinal Var - SAV*/
+proc freq data=log.INSURANCE_T;
+	tables SAV*INS / chisq measures cl;
+	title 'Ordinal Association: SAV';
+run;
+
+		/* SAVBAL Continuous */
+proc univariate data=log.insurance_t;
+	var SAVBAL;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=SAVBAL / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=SAVBAL';
+run;
+/* Testing Assumptions */
+/* General Additive Model (GAM) */
+/* Continuous Var - SAVBAL*/
+proc gam data=log.INSURANCE_T
+		plots = components(clm commonaxes);
+	model ins(event='1') = spline(SAVBAL, df=2)
+	/ dist = binomial link = logit;
+title 'Continuous Var Association: SAVBAL';
+run;
+
+		/* ATM Binary */
+proc univariate data=log.insurance_t;
+	var ATM;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=ATM / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=ATM';
+run;
+/* Testing Assumptions */
+/* Mantel-Haenszel Chi-Sq */
+/* Ordinal Var - ATM*/
+proc freq data=log.INSURANCE_T;
+	tables ATM*INS / chisq measures cl;
+	title 'Ordinal Association: ATM';
+run;
+
+		/* ATMAMT cont*/
+proc univariate data=log.insurance_t;
+	var ATMAMT;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=ATMAMT / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=ATMAMT';
+run;
+/* Testing Assumptions */
+/* General Additive Model (GAM) */
+/* Continuous Var - ATMAMT*/
+proc gam data=log.INSURANCE_T
+plots = components(clm commonaxes);
+model ins(event='1') = spline(ATMAMT, df=2)
+/ dist = binomial link = logit;
+title 'Continuous Var Association: ATMAMT';
+run;
+
+		/* POS cont*/ 
+proc univariate data=log.insurance_t;
+	var POS;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=POS / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=POS';
+run;
+/* Testing Assumptions */
+/* General Additive Model (GAM) */
+/* Continuous Var - POS*/
+proc gam data=log.INSURANCE_T
+plots = components(clm commonaxes);
+model ins(event='1') = spline(POS, df=2)
+/ dist = binomial link = logit;
+title 'Continuous Var Association: POS';
+run;
+
+		/* POSAMT cont*/
+proc univariate data=log.insurance_t;
+	var POSAMT;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=POSAMT / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=POSAMT';
+run;
+/* Testing Assumptions */
+/* General Additive Model (GAM) */
+/* Continuous Var - POSAMT*/
+proc gam data=log.INSURANCE_T
+plots = components(clm commonaxes);
+model ins(event='1') = spline(POSAMT, df=2)
+/ dist = binomial link = logit;
+title 'Continuous Var Association: POSAMT';
+run;
+
+		/* CD Binary */
+proc univariate data=log.insurance_t;
+	var CD;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=CD / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=CD';
+run;
+/* Testing Assumptions */
+/* Mantel-Haenszel Chi-Sq */
+/* Ordinal Var - CD*/
+proc freq data=log.INSURANCE_T;
+	tables CD*INS / chisq measures cl;
+	title 'Ordinal Association: CD';
+run;
+
+		/* CDBAL cont*/
+proc univariate data=log.insurance_t;
+	var CDBAL;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=CDBAL / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=CDBAL';
+run;
+/* Testing Assumptions */
+/* General Additive Model (GAM) */
+/* Continuous Var - CDBAL*/
+proc gam data=log.INSURANCE_T
+plots = components(clm commonaxes);
+model ins(event='1') = spline(CDBAL, df=2)
+/ dist = binomial link = logit;
+title 'Continuous Var Association: CDBAL';
+run;
+
+		/* IRA Binary */
+proc univariate data=log.insurance_t;
+	var IRA;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=IRA / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=IRA';
+run;
+/* Testing Assumptions */
+/* Mantel-Haenszel Chi-Sq */
+/* Ordinal Var -  IRA*/
+proc freq data=log.INSURANCE_T;
+	tables IRA*INS / chisq measures cl;
+	title 'Ordinal Association: IRA';
+run;
+
+		/* IRABAL cont*/
+proc univariate data=log.insurance_t;
+	var IRABAL;
+run;
+proc logistic data=log.INSURANCE_T alpha=0.002
+              plots(only)=(effect oddsratio);
+    model INS(event='1')=IRABAL / clodds=pl;
+    title 'LOGISTIC MODEL (1):INS=IRABAL';
+run;
+/* Testing Assumptions */
+/* General Additive Model (GAM) */
+/* Continuous Var - IRABAL*/
+proc gam data=log.INSURANCE_T
+plots = components(clm commonaxes);
+model ins(event='1') = spline(IRABAL, df=2)
+/ dist = binomial link = logit;
+title 'Continuous Var Association: IRABAL';
+run;
